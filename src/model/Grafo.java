@@ -25,12 +25,10 @@ public class Grafo {
 
         for (Vertice vertice_linha : vertices) {
             for (Vertice vertice_coluna : vertices) {
-                if (vertice_linha.valor.equals(vertice_coluna.valor)) {            
-                    matriz[linha][coluna] = 1;
-                } else if (vertice_linha.Adjacentes.contains(vertice_coluna)) {         
-                    matriz[linha][coluna] = 1;
-                } else {
+                if (!(vertice_linha.valor.equals(vertice_coluna.valor))) {            
                     matriz[linha][coluna] = 0;
+                } else {
+                    matriz[linha][coluna] = 1;
                 }
                 coluna++;
             }
