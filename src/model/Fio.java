@@ -4,6 +4,7 @@ public class Fio {
     public Poste primeiro_vertice;
     public Poste segundo_vertice;
     public String aresta;
+    public int comprimento_fio;
 
     public Fio(Poste A, Poste B) {
         this.primeiro_vertice = A;
