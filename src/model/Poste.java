@@ -4,16 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Poste {
-    public String vertice;
-    public List<Poste> Adjacentes;
+    private String id;
+    private boolean conectado;
 
-    public Poste(String V) {
-        this.vertice = V;
-        this.Adjacentes = new ArrayList<>();
+    public Poste(String id, boolean conectado){
+        this.id = id;
+        this.conectado = conectado;
     }
 
-    public void adicionar_adj(Poste novo) {
-        Adjacentes.add(novo);
+    public String getId() {
+        return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public boolean isConectado() {
+        return conectado;
+    }
+
+    public void setConectado(boolean conectado) {
+        this.conectado = conectado;
+    }
 }
