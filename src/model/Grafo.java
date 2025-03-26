@@ -1,45 +1,25 @@
 package model;
 
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class Grafo {
+    private Map<String, LinkedList<String>> listaDeAjacencia;
+    //private List<Conexoes> listaConexoes;
+    //private Set<Poste> listaPostes; //Set não permite objetos repetidos na lista
 
-    public int[][] matriz;
-    public List<Conexoes> arestas;
-    public List<Poste> vertices;
-
-    public Grafo(List<Conexoes> listaArestas, List<Poste> Listavertices) {
-        this.matriz = new int[Listavertices.size()][Listavertices.size()];
-        this.arestas = listaArestas;
-        this.vertices = Listavertices;
-        this.fazerMatriz();
+    public Grafo(Map<String, LinkedList<String>> listaAdjacencia) { 
+        //a lsita de conexões será lida do arquivo .txt ou .json pelo objeto da classe LeitorArquivo
+        //que ja vai retornar formatado
+        this.listaDeAjacencia = listaAdjacencia;
     }
 
-    private void fazerMatriz() {
-        int linha = 0;
-        int coluna = 0;
-
-        for (Poste vertice_linha : vertices) {
-            for (Poste vertice_coluna : vertices) {
-                if (!vertice_linha.Adjacentes.contains(vertice_coluna) && !vertice_coluna.equals(vertice_linha) ) {            
-                    matriz[linha][coluna] = 0;
-                } else {
-                    matriz[linha][coluna] = 1;
-                }
-                coluna++;
-            }
-            linha++;
-            coluna = 0;
-        }
+    public Map<String, LinkedList<String>> getListaDeAjacencia() {
+        return listaDeAjacencia;
     }
 
-    public void ImprimirMatriz() {
-        for (int linha = 0; linha < vertices.size(); linha++) {
-            for (int coluna = 0; coluna < vertices.size(); coluna++) {
-                System.out.printf("[%d]", matriz[linha][coluna]);
-            }
-            System.out.println();
-        }
+    public void setListaDeAjacencia(Map<String, LinkedList<String>> listaDeAjacencia) {
+        this.listaDeAjacencia = listaDeAjacencia;
     }
 
 }
