@@ -7,10 +7,10 @@ public class Grafo {
     public int vertices_total;
     public int arestas_total;
     public int[][] matriz;
-    public List<Aresta> arestas;
-    public List<Vertice> vertices;
+    public List<Fio> arestas;
+    public List<Poste> vertices;
 
-    public Grafo(int v, int a, List<Aresta> listaArestas, List<Vertice> Listavertices) {
+    public Grafo(int v, int a, List<Fio> listaArestas, List<Poste> Listavertices) {
         this.vertices_total = v;
         this.arestas_total = a;
         this.matriz = new int[v][v];
@@ -23,8 +23,8 @@ public class Grafo {
         int linha = 0;
         int coluna = 0;
 
-        for (Vertice vertice_linha : vertices) {
-            for (Vertice vertice_coluna : vertices) {
+        for (Poste vertice_linha : vertices) {
+            for (Poste vertice_coluna : vertices) {
                 if (!(vertice_linha.Adjacentes.contains(vertice_coluna))) {            
                     matriz[linha][coluna] = 0;
                 } else {

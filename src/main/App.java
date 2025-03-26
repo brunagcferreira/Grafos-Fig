@@ -2,9 +2,9 @@ package main;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.Aresta;
+import model.Fio;
 import model.Grafo;
-import model.Vertice;
+import model.Poste;
 
 
 
@@ -12,21 +12,21 @@ import model.Vertice;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Vertice A = new Vertice("A");
-        Vertice B = new Vertice("B");
-        Vertice C = new Vertice("C");
-        Vertice D = new Vertice("D");
-        Vertice E = new Vertice("E");
-        Vertice F = new Vertice("F");
+        Poste A = new Poste("A");
+        Poste B = new Poste("B");
+        Poste C = new Poste("C");
+        Poste D = new Poste("D");
+        Poste E = new Poste("E");
+        Poste F = new Poste("F");
 
-        Aresta BC = new Aresta(B, C);
-        Aresta AD = new Aresta(A, D);
-        Aresta AB = new Aresta(A, B);
-        Aresta AC = new Aresta(A, C);
-        Aresta EF = new Aresta(E, F);
+        Fio BC = new Fio(B, C);
+        Fio AD = new Fio(A, D);
+        Fio AB = new Fio(A, B);
+        Fio AC = new Fio(A, C);
+        Fio EF = new Fio(E, F);
 
-        List<Vertice> listaVertices = new ArrayList<>();
-        List<Aresta> listaArestas = new ArrayList<>();
+        List<Poste> listaVertices = new ArrayList<>();
+        List<Fio> listaArestas = new ArrayList<>();
 
         listaArestas.add(BC);
         listaArestas.add(AB);
