@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Poste {
+public class Poste {                            // Vértice
     public String vertice;
     public List<Poste> Adjacentes;
 

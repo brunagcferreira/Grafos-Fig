@@ -1,6 +1,6 @@
 package model;
 
-public class Fio {
+public class Fio {                          // Aresta
     public Poste primeiro_vertice;
     public Poste segundo_vertice;
     public String aresta;

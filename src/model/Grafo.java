@@ -25,7 +25,7 @@ public class Grafo {
 
         for (Poste vertice_linha : vertices) {
             for (Poste vertice_coluna : vertices) {
-                if (!(vertice_linha.Adjacentes.contains(vertice_coluna))) {            
+                if (!vertice_linha.Adjacentes.contains(vertice_coluna) && !vertice_coluna.equals(vertice_linha) ) {            
                     matriz[linha][coluna] = 0;
                 } else {
                     matriz[linha][coluna] = 1;
