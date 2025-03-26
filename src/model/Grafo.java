@@ -5,10 +5,10 @@ import java.util.List;
 public class Grafo {
 
     public int[][] matriz;
-    public List<Fio> arestas;
+    public List<Conexoes> arestas;
     public List<Poste> vertices;
 
-    public Grafo(List<Fio> listaArestas, List<Poste> Listavertices) {
+    public Grafo(List<Conexoes> listaArestas, List<Poste> Listavertices) {
         this.matriz = new int[Listavertices.size()][Listavertices.size()];
         this.arestas = listaArestas;
         this.vertices = Listavertices;

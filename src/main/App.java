@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.Fio;
+import model.Conexoes;
 import model.Grafo;
 import model.Poste;
 
@@ -19,14 +19,14 @@ public class App {
         Poste E = new Poste("E");
         Poste F = new Poste("F");
 
-        Fio BC = new Fio(B, C, 8);
-        Fio AD = new Fio(A, D, 9);
-        Fio AB = new Fio(A, B, 10);
-        Fio AC = new Fio(A, C, 9);
-        Fio EF = new Fio(E, F, 8);
+        Conexoes BC = new Conexoes(B, C, 8);
+        Conexoes AD = new Conexoes(A, D, 9);
+        Conexoes AB = new Conexoes(A, B, 10);
+        Conexoes AC = new Conexoes(A, C, 9);
+        Conexoes EF = new Conexoes(E, F, 8);
 
         List<Poste> listaVertices = new ArrayList<>();
-        List<Fio> listaArestas = new ArrayList<>();
+        List<Conexoes> listaArestas = new ArrayList<>();
 
         listaArestas.add(BC);
         listaArestas.add(AB);
