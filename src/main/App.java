@@ -19,11 +19,11 @@ public class App {
         Poste E = new Poste("E");
         Poste F = new Poste("F");
 
-        Fio BC = new Fio(B, C);
-        Fio AD = new Fio(A, D);
-        Fio AB = new Fio(A, B);
-        Fio AC = new Fio(A, C);
-        Fio EF = new Fio(E, F);
+        Fio BC = new Fio(B, C, 8);
+        Fio AD = new Fio(A, D, 9);
+        Fio AB = new Fio(A, B, 10);
+        Fio AC = new Fio(A, C, 9);
+        Fio EF = new Fio(E, F, 8);
 
         List<Poste> listaVertices = new ArrayList<>();
         List<Fio> listaArestas = new ArrayList<>();
@@ -43,6 +43,9 @@ public class App {
 
         Grafo matriz = new Grafo(listaVertices.size(), listaArestas.size(), listaArestas, listaVertices);
 
+        System.out.println(BC.comprimento_fio);
+        System.out.println(AB.comprimento_fio);
+        System.out.println(AD.comprimento_fio);
         matriz.ImprimirMatriz();
 
     }
