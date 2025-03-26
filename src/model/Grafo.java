@@ -4,16 +4,12 @@ import java.util.List;
 
 public class Grafo {
 
-    public int vertices_total;
-    public int arestas_total;
     public int[][] matriz;
     public List<Fio> arestas;
     public List<Poste> vertices;
 
-    public Grafo(int v, int a, List<Fio> listaArestas, List<Poste> Listavertices) {
-        this.vertices_total = v;
-        this.arestas_total = a;
-        this.matriz = new int[v][v];
+    public Grafo(List<Fio> listaArestas, List<Poste> Listavertices) {
+        this.matriz = new int[Listavertices.size()][Listavertices.size()];
         this.arestas = listaArestas;
         this.vertices = Listavertices;
         this.fazerMatriz();
@@ -38,8 +34,8 @@ public class Grafo {
     }
 
     public void ImprimirMatriz() {
-        for (int linha = 0; linha < vertices_total; linha++) {
-            for (int coluna = 0; coluna < vertices_total; coluna++) {
+        for (int linha = 0; linha < vertices.size(); linha++) {
+            for (int coluna = 0; coluna < vertices.size(); coluna++) {
                 System.out.printf("[%d]", matriz[linha][coluna]);
             }
             System.out.println();

@@ -41,7 +41,7 @@ public class App {
         listaVertices.add(E);
         listaVertices.add(F);
 
-        Grafo matriz = new Grafo(listaVertices.size(), listaArestas.size(), listaArestas, listaVertices);
+        Grafo matriz = new Grafo(listaArestas, listaVertices);
 
         System.out.println(BC.comprimento_fio);
         System.out.println(AB.comprimento_fio);

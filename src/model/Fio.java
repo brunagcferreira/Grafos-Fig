@@ -4,9 +4,9 @@ public class Fio {                          // Aresta
     public Poste primeiro_vertice;
     public Poste segundo_vertice;
     public String aresta;
-    public int comprimento_fio;
+    public double comprimento_fio;
 
-    public Fio(Poste A, Poste B, int comprimento) {
+    public Fio(Poste A, Poste B, double comprimento) {
         this.primeiro_vertice = A;
         this.segundo_vertice = B;
         this.aresta = primeiro_vertice.vertice + segundo_vertice.vertice;
