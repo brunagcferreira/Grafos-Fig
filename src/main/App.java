@@ -18,5 +18,7 @@ public class App {
 
         System.out.println("LISTA DE CONEXÕES");
         grafo.exibirConexoes();
+
+        System.out.println( "qntd de conexoes" + grafo.getListaConexoes().size());
     }
 }
