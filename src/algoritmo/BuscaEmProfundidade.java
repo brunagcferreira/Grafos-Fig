@@ -10,6 +10,7 @@ import java.util.Set;
 import model.Poste;
 import model.Grafo;
 
+//implementacao inicial
 public class BuscaEmProfundidade {
     private Grafo grafo;
     private Set<String> visitados;
@@ -61,6 +62,21 @@ public class BuscaEmProfundidade {
 
     public boolean isConexo() {
         return visitados.size() == grafo.getListaPostes().size();
+    }
+    
+    public List<Poste> fazerCaminho(Poste alvo) {
+        List<Poste> caminho = new ArrayList<>();
+        String atualId = alvo.getId();
+
+        while (atualId != null) {
+            Poste poste = encontrarPostePorId(atualId);
+            if (poste != null) {
+                caminho.add(0, poste); // Adiciona no início para manter a ordem
+            }
+            atualId = pai.get(atualId);
+        }
+
+        return caminho;
     }
 
 }
