@@ -14,6 +14,26 @@ public class Conexoes {                          // Aresta
         this.distancia = distancia;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        
+        Conexoes conexao = (Conexoes) obj;
+        
+        // Como o grafo é não direcionado, (A, B) e (B, A) devem ser considerados iguais
+        return (origem.equals(conexao.origem) && destino.equals(conexao.destino) ||
+                origem.equals(conexao.destino) && destino.equals(conexao.origem))
+                && distancia.equals(conexao.distancia);
+    }
+
+    @Override
+    public int hashCode() {
+        // Garante que (A, B) e (B, A) tenham o mesmo hash
+        return origem.getId().hashCode() + destino.getId().hashCode() + distancia.hashCode();
+    }
+
+
     public String getId() {
         return id;
     }
