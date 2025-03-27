@@ -2,15 +2,15 @@ package model;
 
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class Grafo {
     private Map<String, LinkedList<String>> listaDeAjacencia;
-    private Set<Conexoes> listaConexoes;
-    private Set<Poste> listaPostes;
+    private ArrayList<Conexoes> listaConexoes;
+    private ArrayList<Poste> listaPostes;
 
-    public Grafo(Map<String, LinkedList<String>> listaDeAjacencia, Set<Conexoes> listaConexoes,
-            Set<Poste> listaPostes) {
+    public Grafo(Map<String, LinkedList<String>> listaDeAjacencia, ArrayList<Conexoes> listaConexoes,
+            ArrayList<Poste> listaPostes) {
         this.listaDeAjacencia = listaDeAjacencia;
         this.listaConexoes = listaConexoes;
         this.listaPostes = listaPostes;
@@ -43,19 +43,19 @@ public class Grafo {
         this.listaDeAjacencia = listaDeAjacencia;
     }
 
-    public Set<Conexoes> getListaConexoes() {
+    public ArrayList<Conexoes> getListaConexoes() {
         return listaConexoes;
     }
 
-    public void setListaConexoes(Set<Conexoes> listaConexoes) {
+    public void setListaConexoes(ArrayList<Conexoes> listaConexoes) {
         this.listaConexoes = listaConexoes;
     }
 
-    public Set<Poste> getListaPostes() {
+    public ArrayList<Poste> getListaPostes() {
         return listaPostes;
     }
 
-    public void setListaPostes(Set<Poste> listaPostes) {
+    public void setListaPostes(ArrayList<Poste> listaPostes) {
         this.listaPostes = listaPostes;
     }
 }
