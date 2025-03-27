@@ -3,26 +3,28 @@ package util;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.*;
 
+import model.Conexoes;
 import model.Poste;
 
 public class LeitorArquivo {
     private String caminho;
     private int qntdArestas;
     private int qntdVertices;
-    private Map<String, LinkedList<String>> listaVertices;
-    private ArrayList<Poste> listaPostes;
+    private Map<String, LinkedList<String>> listaDeAjacencia;
+    private Map<String, Poste> listaPostes;
+    private Set<Conexoes> listaConexoes;
 
     public LeitorArquivo(String caminho){
         this.caminho = caminho;
-        this.listaVertices = new HashMap<>();
-        this.listaPostes = new ArrayList<Poste>();
+        this.listaDeAjacencia = new LinkedHashMap<String, LinkedList<String>>();
+        this.listaPostes = new LinkedHashMap<String, Poste>();
+        this.listaConexoes = new LinkedHashSet<>();
     }
 
-    public void inicializarListaDeVertices(){
+    public void inicializarListaDeAdjacencia(){
+
         try (BufferedReader br = new BufferedReader(new FileReader (caminho))){
             String linha = br.readLine();
             String[] verticeAresta = linha.split(" ");
@@ -30,33 +32,34 @@ public class LeitorArquivo {
             setQntdArestas(Integer.parseInt(verticeAresta[1]));
 
             for(int i = 0; i < qntdVertices; i++){
-                linha = br.readLine();
-                listaVertices.put(linha, new LinkedList<>());
-                Poste p = new Poste(String.valueOf(i), false);
-                listaPostes.add(p);
+                
+                Poste p = new Poste(false);
+                listaPostes.put(p.getId(), p);
+
+                listaDeAjacencia.put(p.getId(), new LinkedList<>());
             }
 
             for(int i = 0; i < qntdArestas; i++){
                 linha = br.readLine();
-                String origem = String.valueOf(linha.charAt(0));
-                String destino = String.valueOf(linha.charAt(1));
-                if(!listaVertices.get(origem).contains(destino)){
-                    listaVertices.get(origem).add(destino);
+                String[] origemDestinoPeso = linha.split(" ");
+                String origem = origemDestinoPeso[0];
+                String destino = origemDestinoPeso[1];
+                Double distancia = Double.parseDouble(origemDestinoPeso[2]);
+
+                Conexoes c = new Conexoes(listaPostes.get(origem) , listaPostes.get(destino), distancia);
+                listaConexoes.add(c);
+                
+                if(!listaDeAjacencia.get(origem).contains(destino)){
+                    listaDeAjacencia.get(origem).add(destino);
                 }
 
-                if(!listaVertices.get(destino).contains(origem)){
-                    listaVertices.get(destino).add(origem);
+                if(!listaDeAjacencia.get(destino).contains(origem)){
+                    listaDeAjacencia.get(destino).add(origem);
                 }
             }
             
         } catch (IOException e) {
             System.out.println("Erro na leitura do arquivo" + e.getMessage());
-        }
-    }
-
-    public void exibirLista(){
-        for(String i : listaVertices.keySet()){
-            System.out.println(i + ": " + listaVertices.get(i));
         }
     }
 
@@ -84,20 +87,33 @@ public class LeitorArquivo {
         this.qntdVertices = qntdVertices;
     }
 
-    public Map<String, LinkedList<String>> getListaVertices() {
-        return listaVertices;
+    public Map<String, LinkedList<String>> getListaDeAjacencia() {
+        return listaDeAjacencia;
     }
 
-    public void setListaVertices(Map<String, LinkedList<String>> listaVertices) {
-        this.listaVertices = listaVertices;
+    public void setListaDeAjacencia(Map<String, LinkedList<String>> listaVertices) {
+        this.listaDeAjacencia = listaVertices;
     }
 
-    public List<Poste> getListaPostes() {
-        return listaPostes;
+    public Set<Poste> getListaPostes() {
+        Set<Poste> lista = new LinkedHashSet<>();
+        for(String s : listaPostes.keySet()){
+            Poste p = listaPostes.get(s);
+            lista.add(p);
+        }
+        return lista;
     }
 
-    public void setListaPostes(ArrayList<Poste> listaPostes) {
+    public void setListaPostes(Map<String, Poste> listaPostes) {
         this.listaPostes = listaPostes;
+    }
+
+    public Set<Conexoes> getListaConexoes() {
+        return listaConexoes;
+    }
+
+    public void setListaConexoes(Set<Conexoes> listaConexoes) {
+        this.listaConexoes = listaConexoes;
     }
 
 }

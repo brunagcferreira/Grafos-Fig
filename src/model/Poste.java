@@ -1,11 +1,12 @@
 package model;
 
 public class Poste {
+    private static int contador = 0; 
     private String id;
     private boolean conectado;
 
-    public Poste(String id, boolean conectado){
-        this.id = id;
+    public Poste(boolean conectado){
+        this.id = String.valueOf(contador++);
         this.conectado = conectado;
     }
 

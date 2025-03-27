@@ -1,13 +1,14 @@
 package model;
 
 public class Conexoes {                          // Aresta
+    private static int contador = 0; 
     private String id;
     private Poste origem;
     private Poste destino;
-    private Double distancia;
+    private Double distancia; //peso
 
-    public Conexoes(String id, Poste origem, Poste destino, Double distancia) {
-        this.id = id;
+    public Conexoes(Poste origem, Poste destino, Double distancia) {
+        this.id = String.valueOf(contador++);
         this.origem = origem;
         this.destino = destino;
         this.distancia = distancia;
