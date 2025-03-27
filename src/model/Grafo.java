@@ -31,6 +31,7 @@ public class Grafo {
     public void exibirConexoes(){
         for (Conexoes c : listaConexoes){
             System.out.println("Poste " + c.getOrigem().getId() + " conectado ao poste " + c.getDestino().getId());
+            System.out.println("Poste " + c.getDestino().getId() + " conectado ao poste " + c.getOrigem().getId());
         }
     }
 
