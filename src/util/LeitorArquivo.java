@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-
 import model.Conexoes;
 import model.Poste;
 
@@ -48,6 +47,7 @@ public class LeitorArquivo {
 
                 Conexoes c = new Conexoes(listaPostes.get(origem) , listaPostes.get(destino), distancia);
                 listaConexoes.add(c);
+                
                 
                 if(!listaDeAjacencia.get(origem).contains(destino)){
                     listaDeAjacencia.get(origem).add(destino);

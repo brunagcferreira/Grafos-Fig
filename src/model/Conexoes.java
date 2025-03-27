@@ -21,10 +21,8 @@ public class Conexoes {                          // Aresta
         
         Conexoes conexao = (Conexoes) obj;
         
-        // Como o grafo é não direcionado, (A, B) e (B, A) devem ser considerados iguais
-        return (origem.equals(conexao.origem) && destino.equals(conexao.destino) ||
-                origem.equals(conexao.destino) && destino.equals(conexao.origem))
-                && distancia.equals(conexao.distancia);
+        return (origem.equals(conexao.origem) && destino.equals(conexao.destino)
+                && distancia.equals(conexao.distancia));
     }
 
     @Override
