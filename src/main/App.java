@@ -5,7 +5,7 @@ import util.LeitorArquivo;
 
 public class App {
     public static void main(String[] args) {
-        String caminho = "/home/bruna/Documentos/AED 2/AED-2-Codes/grafos-fig/entrada.txt";
+        String caminho = "./entradas/entrada.txt";
         LeitorArquivo leitor = new LeitorArquivo(caminho);
         leitor.inicializarListaDeAdjacencia();
         
