@@ -35,6 +35,34 @@ public class Grafo {
         }
     }
 
+    public Poste encontrarPostePorId(String id) {
+        for (Poste poste : listaPostes) {
+            if (poste.getId().equals(id)) {
+                return poste;
+            }
+        }
+        return null;
+    }
+
+    public double getDistancia(Poste origem, Poste destino) {
+        for (Conexoes conexao : listaConexoes) {
+            if ((conexao.getOrigem().equals(origem) && conexao.getDestino().equals(destino)) ||
+                (conexao.getOrigem().equals(destino) && conexao.getDestino().equals(origem))) {
+                return conexao.getDistancia();
+            }
+        }
+        return Double.POSITIVE_INFINITY; 
+    }
+
+    public Poste getPrimeiroPosteConectado() {
+        for (Poste poste : listaPostes) {
+            if (poste.isConectado()) {
+                return poste;
+            }
+        }
+        return null;
+    }
+    
     public Map<String, LinkedList<String>> getListaDeAjacencia() {
         return listaDeAjacencia;
     }

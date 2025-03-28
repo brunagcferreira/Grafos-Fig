@@ -1,12 +1,16 @@
 package main;
 
+import java.util.List;
+
+import algoritmo.Dijkstra;
 import model.Grafo;
+import model.Poste;
 import util.LeitorArquivo;
 
 public class App {
     public static void main(String[] args) {
-        String caminho = "/home/bruna/Documentos/AED 2/AED-2-Codes/grafos-fig/entrada.txt";
-        LeitorArquivo leitor = new LeitorArquivo(caminho);
+        String entrada = "src/resources/entrada.txt";
+        LeitorArquivo leitor = new LeitorArquivo(entrada);
         leitor.inicializarListaDeAdjacencia();
         
         Grafo grafo = new Grafo(leitor.getListaDeAjacencia(), leitor.getListaConexoes(), leitor.getListaPostes());
@@ -20,5 +24,28 @@ public class App {
         grafo.exibirConexoes();
 
         System.out.println( "qntd de conexoes" + grafo.getListaConexoes().size());
+        
+        Dijkstra dijkstra = new Dijkstra(grafo);
+        
+        Poste provedora = grafo.encontrarPostePorId("0");
+        if (provedora != null) {
+            provedora.setConectado(true);
+            System.out.println("Provedora configurada como Poste " + provedora.getId());
+        }
+        
+        dijkstra.encontrarMenorCaminho(provedora);
+        
+        for (Poste poste : grafo.getListaPostes()) {
+            if (!poste.equals(provedora)) {
+                List<Poste> caminho = dijkstra.getCaminho(poste);
+                double distancia = dijkstra.getDistancia(poste.getId());
+                
+                System.out.print("caminho para " + poste.getId() + ": ");
+                for (Poste p : caminho) {
+                    System.out.print(p.getId() + " ");
+                }
+                System.out.println("distancia: " + distancia + "");
+            }
+        }
     }
 }
