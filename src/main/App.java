@@ -9,7 +9,7 @@ import util.LeitorArquivo;
 
 public class App {
     public static void main(String[] args) {
-        String entrada = "src/resources/entrada.txt";
+        String entrada = "src/resources/entrada_atualizada.txt";
         LeitorArquivo leitor = new LeitorArquivo(entrada);
         leitor.inicializarListaDeAdjacencia();
         
