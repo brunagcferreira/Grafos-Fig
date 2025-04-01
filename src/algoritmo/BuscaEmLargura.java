@@ -23,7 +23,6 @@ public class BuscaEmLargura {
                 posteCliente.setCasasAtendidas(posteCliente.getCasasAtendidas() + 1);
                 return Collections.singletonList(posteCliente);
             }
-            // Se o poste de origem está cheio, procura outro caminho
         }
 
         Map<Poste, Poste> pais = new HashMap<>();
@@ -86,7 +85,7 @@ public class BuscaEmLargura {
             }
         }
 
-        throw new Exception("Nenhum poste disponível para atender a nova casa");
+        throw new Exception("nenhum poste disponível");
     }
 
     private List<Poste> reconstruirCaminho(Map<Poste, Poste> pais, Poste destino, Poste origem) {
@@ -112,7 +111,7 @@ public class BuscaEmLargura {
         if (caminho == null || caminho.size() < 2) {
             return 0;
         }
-        
+
         double distanciaTotal = 0;
         for (int i = 0; i < caminho.size() - 1; i++) {
             Poste atual = caminho.get(i);
@@ -126,7 +125,7 @@ public class BuscaEmLargura {
         if (caminho == null || caminho.isEmpty()) {
             return "[]";
         }
-    
+
         StringBuilder sb = new StringBuilder("[");
         for (Poste poste : caminho) {
             sb.append(poste.getId()).append(", ");
@@ -134,7 +133,7 @@ public class BuscaEmLargura {
 
         sb.setLength(sb.length() - 2);
         sb.append("]");
-        
+
         return sb.toString();
     }
 }

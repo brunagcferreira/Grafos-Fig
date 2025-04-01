@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import algoritmo.BuscaEmLargura;
-import algoritmo.DijkstraBruna;
 import model.RedeEletrica;
 import model.Poste;
 import util.LeitorArquivo;
@@ -15,7 +14,7 @@ public class App {
         String entrada = "src/resources/entrada.txt";
         LeitorArquivo leitor = new LeitorArquivo(entrada);
         leitor.inicializarListaDeAdjacencia();
-        
+
         RedeEletrica rede = new RedeEletrica(leitor.getListaDeAjacencia(), leitor.getListaConexoes(), leitor.getListaPostes());
         System.out.println("LISTA DE POSTES POR ID");
         rede.exibirListaDePostes();
@@ -74,7 +73,7 @@ public class App {
         //Dijkstra dijkstra = new Dijkstra(grafo);
 
         /*DijkstraBruna dk = new DijkstraBruna(grafo);
-        
+
         Poste provedora = grafo.encontrarPostePorId("0");
         if (provedora != null) {
             provedora.setConectado(true);
@@ -110,12 +109,12 @@ public class App {
         */
 
         /*dijkstra.encontrarMenorCaminho(provedora);
-        
+
         for (Poste poste : grafo.getListaPostes()) {
             if (!poste.equals(provedora)) {
                 List<Poste> caminho = dijkstra.getCaminho(poste);
                 double distancia = dijkstra.getDistancia(poste.getId());
-                
+
                 System.out.print("caminho para " + poste.getId() + ": ");
                 for (Poste p : caminho) {
                     System.out.print(p.getId() + " ");
@@ -125,3 +124,4 @@ public class App {
         }*/
     }
 }
+
