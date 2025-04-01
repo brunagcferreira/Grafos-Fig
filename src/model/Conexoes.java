@@ -1,6 +1,6 @@
 package model;
 
-public class Conexoes {                          // Aresta
+public class Conexoes {
     private static int contador = 0; 
     private String id;
     private Poste origem;

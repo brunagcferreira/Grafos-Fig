@@ -8,16 +8,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import model.Poste;
-import model.Grafo;
+import model.RedeEletrica;
 
 //implementacao inicial
 public class BuscaEmProfundidade {
-    private Grafo grafo;
+    private RedeEletrica grafo;
     private Set<String> visitados;
     private List<Poste> ordemVisita;
     private Map<String, String> pai;
 
-    public BuscaEmProfundidade(Grafo grafo) {
+    public BuscaEmProfundidade(RedeEletrica grafo) {
         this.grafo = grafo;
         this.visitados = new HashSet<>();
         this.ordemVisita = new ArrayList<>();

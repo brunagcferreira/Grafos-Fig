@@ -1,14 +1,14 @@
 package algoritmo;
 
 import java.util.*;
-import model.Grafo;
+import model.RedeEletrica;
 import model.Poste;
 
 public class DijkstraBruna {
     
-    private Grafo grafo;
+    private RedeEletrica grafo;
 
-    public DijkstraBruna(Grafo grafo) {
+    public DijkstraBruna(RedeEletrica grafo) {
         this.grafo = grafo;
     }
 

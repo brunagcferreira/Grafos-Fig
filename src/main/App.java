@@ -1,10 +1,8 @@
 package main;
 
-import java.util.List;
 import java.util.Scanner;
-import algoritmo.Dijkstra;
 import algoritmo.DijkstraBruna;
-import model.Grafo;
+import model.RedeEletrica;
 import model.Poste;
 import util.LeitorArquivo;
 
@@ -14,7 +12,7 @@ public class App {
         LeitorArquivo leitor = new LeitorArquivo(entrada);
         leitor.inicializarListaDeAdjacencia();
         
-        Grafo grafo = new Grafo(leitor.getListaDeAjacencia(), leitor.getListaConexoes(), leitor.getListaPostes());
+        RedeEletrica grafo = new RedeEletrica(leitor.getListaDeAjacencia(), leitor.getListaConexoes(), leitor.getListaPostes());
         System.out.println("LISTA DE POSTES POR ID");
         grafo.exibirListaDePostes();
 

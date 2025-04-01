@@ -1,16 +1,16 @@
 package algoritmo;
 
 import model.Poste;
-import model.Grafo;
+import model.RedeEletrica;
 import java.util.*;
 
 public class Dijkstra {
-    private Grafo grafo;
+    private RedeEletrica grafo;
     private Map<String, Double> distancias;
     private Map<String, Poste> pais;
     private Set<Poste> postesConectados;
 
-    public Dijkstra(Grafo grafo) {
+    public Dijkstra(RedeEletrica grafo) {
         this.grafo = grafo;
         this.distancias = new HashMap<>();
         this.pais = new HashMap<>();
