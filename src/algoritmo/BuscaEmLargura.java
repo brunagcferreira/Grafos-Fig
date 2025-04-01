@@ -17,11 +17,12 @@ public class BuscaEmLargura {
         this.rede = rede;
     }
 
-    public List<Poste> encontrarCaminhoParaProvedora(Poste posteCliente) {
-        
-        //caso o poste já esteja concetado, retorna ele *MODIFICAR COM QTD MAX DE CASAS ATENDIDAS*
+    public List<Poste> encontrarCaminho(Poste posteCliente) throws Exception {
         if (posteCliente.isConectado()) {
-            return Collections.singletonList(posteCliente); 
+            if (posteCliente.getCasasAtendidas() < Poste.getCapacidadeMax()) {
+                posteCliente.setCasasAtendidas(posteCliente.getCasasAtendidas() + 1);
+                return Collections.singletonList(posteCliente);
+            }
         }
 
         Map<Poste, Poste> pais = new HashMap<>();
@@ -40,8 +41,7 @@ public class BuscaEmLargura {
         while (!fila.isEmpty()) {
             Poste atual = fila.poll();
 
-            //encontrou um poste conectado, checa se é a menor distancia
-            if (atual.isConectado()) {
+            if (atual.isConectado() && atual.getCasasAtendidas() < Poste.getCapacidadeMax()) {
                 if (distancias.get(atual) < menorDistancia) {
                     menorDistancia = distancias.get(atual);
                     posteConectadoMaisProximo = atual;
@@ -63,10 +63,29 @@ public class BuscaEmLargura {
         }
 
         if (posteConectadoMaisProximo != null) {
-            return reconstruirCaminho(pais, posteConectadoMaisProximo, posteCliente);
+            List<Poste> caminho = reconstruirCaminho(pais, posteConectadoMaisProximo, posteCliente);
+            if(posteCliente.getCasasAtendidas() < posteCliente.getCapacidadeMax()){
+                posteCliente.setCasasAtendidas(posteCliente.getCasasAtendidas() + 1);
+            }
+            else{
+                posteConectadoMaisProximo.setCasasAtendidas(posteConectadoMaisProximo.getCasasAtendidas()+1);
+            }
+            return caminho;
         }
 
-        return Collections.emptyList(); //nao encontrou caminho
+        for (String vizinhoId : rede.getListaDeAjacencia().get(posteCliente.getId())) {
+            Poste vizinho = rede.encontrarPostePorId(vizinhoId);
+            if (!vizinho.isConectado()) {
+                List<Poste> caminho = new LinkedList<>();
+                caminho.add(posteCliente);
+                caminho.add(vizinho);
+                vizinho.setConectado(true);
+                vizinho.setCasasAtendidas(1);
+                return caminho;
+            }
+        }
+
+        throw new Exception("nenhum poste disponível");
     }
 
     private List<Poste> reconstruirCaminho(Map<Poste, Poste> pais, Poste destino, Poste origem) {
@@ -92,7 +111,7 @@ public class BuscaEmLargura {
         if (caminho == null || caminho.size() < 2) {
             return 0;
         }
-        
+
         double distanciaTotal = 0;
         for (int i = 0; i < caminho.size() - 1; i++) {
             Poste atual = caminho.get(i);
@@ -106,7 +125,7 @@ public class BuscaEmLargura {
         if (caminho == null || caminho.isEmpty()) {
             return "[]";
         }
-    
+
         StringBuilder sb = new StringBuilder("[");
         for (Poste poste : caminho) {
             sb.append(poste.getId()).append(", ");
@@ -114,7 +133,7 @@ public class BuscaEmLargura {
 
         sb.setLength(sb.length() - 2);
         sb.append("]");
-        
+
         return sb.toString();
     }
 }

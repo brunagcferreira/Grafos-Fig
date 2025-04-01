@@ -5,7 +5,7 @@ public class Poste {
     private static int capacidadeMax = 5; //qntd máxima de casas de clientes para aquele poste
     private String id;
     private boolean conectado; //se o poste está conectao a provedora
-    private int casasAtendidas; //quantidade de casas atuais, não deve ultrapassar capacidadeMax
+    private int casasAtendidas=0; //quantidade de casas atuais, não deve ultrapassar capacidadeMax, inicia em 0
 
     public Poste(boolean conectado){
         this.id = String.valueOf(contador++);
