@@ -1,9 +1,7 @@
 package main;
 
-import java.sql.Time;
 import java.util.List;
 import java.util.Scanner;
-
 import algoritmo.BuscaEmLargura;
 import model.RedeEletrica;
 import model.Poste;
@@ -16,6 +14,7 @@ public class App {
         leitor.inicializarListaDeAdjacencia();
 
         RedeEletrica rede = new RedeEletrica(leitor.getListaDeAjacencia(), leitor.getListaConexoes(), leitor.getListaPostes());
+        
         System.out.println("LISTA DE POSTES POR ID");
         rede.exibirListaDePostes();
 
@@ -30,9 +29,9 @@ public class App {
         Scanner sc = new Scanner(System.in);
         int opt;
 		do {
-	        System.out.println("1. conectar um poste");
-	        System.out.println("99. sair");
-	        System.out.print("escolha uma opcao: ");
+	        System.out.println("1. Conectar um poste");
+	        System.out.println("99. Sair");
+	        System.out.print("Escolha uma opcao: ");
 	        opt = sc.nextInt();
 	        sc.nextLine();
 
@@ -63,65 +62,6 @@ public class App {
 		while (opt != 99);
 
 	        sc.close();
-
-
-
-        //System.out.println("LISTA DE CONEXÕES");
-        //grafo.exibirConexoes();
-
-        //System.out.println( "qntd de conexoes" + grafo.getListaConexoes().size());
-        //Dijkstra dijkstra = new Dijkstra(grafo);
-
-        /*DijkstraBruna dk = new DijkstraBruna(grafo);
-
-        Poste provedora = grafo.encontrarPostePorId("0");
-        if (provedora != null) {
-            provedora.setConectado(true);
-            System.out.println("Provedora configurada como Poste " + provedora.getId());
-        }
-
-        int loop = 1;
-        System.out.println("MENU");
-        System.out.println("1.Verificar menor caminho");
-        System.out.println("99. encerrar");
-        while (loop == 1){
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Digite a opção desejada: ");
-            int i = sc.nextInt();
-            switch (i){
-                case 1:
-                    System.out.println("Insira o ID do poste de origem: ");
-                    String id = sc.next();
-                    Poste alvo = grafo.encontrarPostePorId(id);
-                    dk.encontrarCaminho(alvo);
-                    break;
-
-                case 99:
-                    loop = 0;
-                    sc.close();
-                    break;
-                default:
-                    System.out.println("Opção inválida :()");
-                    break;
-
-            }
-        }
-        */
-
-        /*dijkstra.encontrarMenorCaminho(provedora);
-
-        for (Poste poste : grafo.getListaPostes()) {
-            if (!poste.equals(provedora)) {
-                List<Poste> caminho = dijkstra.getCaminho(poste);
-                double distancia = dijkstra.getDistancia(poste.getId());
-
-                System.out.print("caminho para " + poste.getId() + ": ");
-                for (Poste p : caminho) {
-                    System.out.print(p.getId() + " ");
-                }
-                System.out.println("distancia: " + distancia + "");
-            }
-        }*/
     }
 }
 
