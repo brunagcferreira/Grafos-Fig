@@ -9,7 +9,7 @@ import util.LeitorArquivo;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        String entrada = "src/resources/entrada.txt";
+        String entrada = "src/resources/entrada_final.txt";
         LeitorArquivo leitor = new LeitorArquivo(entrada);
         leitor.inicializarListaDeAdjacencia();
 
@@ -21,7 +21,7 @@ public class App {
         System.out.println("LISTA DE ADJACÊCNIA");
         rede.exibirListaDeAjacencia();
 
-        Poste provedora = rede.encontrarPostePorId("0");
+        Poste provedora = rede.encontrarPostePorId("28");
         provedora.setConectado(true);
 
         BuscaEmLargura buscaLargura = new BuscaEmLargura(rede);
