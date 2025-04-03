@@ -63,7 +63,7 @@ public class BuscaEmLargura {
 
         if (posteConectadoMaisProximo != null) {
             List<Poste> caminho = reconstruirCaminho(pais, posteConectadoMaisProximo, posteCliente);
-            if(posteCliente.getCasasAtendidas() < posteCliente.getCapacidadeMax()){
+            if(posteCliente.getCasasAtendidas() < Poste.getCapacidadeMax()){
                 posteCliente.setCasasAtendidas(posteCliente.getCasasAtendidas() + 1);
             }
             else{
