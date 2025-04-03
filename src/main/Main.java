@@ -16,7 +16,6 @@ public class Main {
         RedeEletrica rede = new RedeEletrica(leitor.getListaDeAjacencia(), leitor.getListaConexoes(), leitor.getListaPostes());
 
         //rede.exibirListaDePostes();
-        //rede.exibirListaDeAjacencia();
 
         Poste provedora = rede.encontrarPostePorId("28");
         provedora.setConectado(true);
@@ -30,7 +29,8 @@ public class Main {
 	        System.out.println("1. Conectar um poste");
             System.out.println("2. Exibir informações de um poste");
             System.out.println("3. Listar postes conectados");
-	        System.out.println("99. Sair");
+            System.out.println("4. Exibir a lista de adjacência");
+            System.out.println("99. Sair");
 	        System.out.print("Escolha uma opção: ");
 	        opt = sc.nextInt();
 	        sc.nextLine();
@@ -78,6 +78,12 @@ public class Main {
                         System.out.println("ID: " + p.getId() + " - Casas atendidas: " + p.getCasasAtendidas() + "/" + Poste.getCapacidadeMax());
                     }
                 }
+                break;
+            case 4:
+                    System.out.println();
+                    System.out.println("Lista de adjacência:");
+                    rede.exibirListaDeAjacencia();
+                    System.out.println();
                 break;
 
 	        case 99:
