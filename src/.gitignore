@@ -1,0 +1,55 @@
+# Ignorar arquivos compilados
+*.class
+
+# Ignorar diretórios de build
+target/
+out/
+bin/
+
+# Arquivos gerados por IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Arquivos do Eclipse
+.project
+.classpath
+.settings/
+
+# Arquivos do VS Code
+.vscode/
+
+# Arquivos do IntelliJ
+*.idea/
+*.idea_modules/
+*.ijwb/
+*.iws
+
+# Arquivos de logs e temporários
+*.log
+dump.rdb
+hs_err_pid*
+
+# Dependências baixadas pelo Maven e Gradle
+.mvn/
+.gradle/
+**/build/
+**/target/
+**/.classpath
+**/.project
+**/.settings/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos específicos do Java
+*.jar
+*.war
+*.ear
+*.class
+
+# Arquivos de configuração local
+.env
+*.properties.local
