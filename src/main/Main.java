@@ -7,9 +7,9 @@ import model.RedeEletrica;
 import model.Poste;
 import util.LeitorArquivo;
 
-public class App {
+public class Main {
     public static void main(String[] args) throws Exception {
-        String entrada = "src/resources/entrada_final.txt";
+        String entrada = "src/resources/entrada.txt";
         LeitorArquivo leitor = new LeitorArquivo(entrada);
         leitor.inicializarListaDeAdjacencia();
 
