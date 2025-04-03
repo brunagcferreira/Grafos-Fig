@@ -31,23 +31,23 @@ public class App {
 		do {
 	        System.out.println("1. Conectar um poste");
 	        System.out.println("99. Sair");
-	        System.out.print("Escolha uma opcao: ");
+	        System.out.print("Escolha uma opção: ");
 	        opt = sc.nextInt();
 	        sc.nextLine();
 
 	        switch (opt) {
 	        case 1:
-                System.out.print("insira o id do poste a ser conectado: ");
+                System.out.print("Insira o id do poste que deseja conectar: ");
                 String id = sc.next();
                 Poste alvo = rede.encontrarPostePorId(id);
                 if (alvo != null) {
                     List<Poste> caminho = buscaLargura.encontrarCaminho(alvo);
                     System.out.println("caminho: " + buscaLargura.caminhoToString(caminho));
-                    System.out.println("distancia ate o mais prox conectado: " + buscaLargura.calcularDistanciaTotal(caminho));
-                    System.out.println("qtd casas: " + alvo.getCasasAtendidas());
+                    System.out.println("Distancia até o poste mais próximo conectado a provedora: " + buscaLargura.calcularDistanciaTotal(caminho));
+                    System.out.println("Quantidade de casas atendidas pelo poste id "+ alvo.getId() + ": " + alvo.getCasasAtendidas());
                     buscaLargura.conectarCaminho(caminho);
                 } else {
-                    System.out.println("poste nao encontrado");
+                    System.out.println("Poste de id " + id + " nao encontrado");
                 }
                 break;
 
@@ -55,7 +55,7 @@ public class App {
 	            break;
 
 	        default:
-	        	System.out.println("opcao invalida");
+	        	System.out.println("Opção invalida");
 	        	break;
 	        }
 		}
