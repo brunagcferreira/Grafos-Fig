@@ -30,6 +30,7 @@ public class Main {
             System.out.println("2. Exibir informações de um poste");
             System.out.println("3. Listar postes conectados");
             System.out.println("4. Exibir a lista de adjacência");
+            System.out.println("5. Exibir informações do poste da provedora");
             System.out.println("99. Sair");
 	        System.out.print("Escolha uma opção: ");
 	        opt = sc.nextInt();
@@ -88,6 +89,20 @@ public class Main {
                     System.out.println();
                 break;
 
+            case 5:
+                System.out.println("Informações do Poste da provedora:");
+                System.out.println("ID: " + provedora.getId());
+                System.out.println("Conectado à rede: " + (provedora.isConectado() ? "Sim" : "Não"));
+                System.out.println("Casas atendidas: " + provedora.getCasasAtendidas() + "/" + Poste.getCapacidadeMax());
+                System.out.print("Vizinhos: ");
+                List<String> vizinhos = rede.getListaDeAjacencia().get(provedora.getId());
+                if (vizinhos != null && !vizinhos.isEmpty()) {
+                    System.out.println(vizinhos);
+                } else {
+                    System.out.println("Nenhum vizinho encontrado");
+                }
+                break;
+            
 	        case 99:
 	            break;
 	        default:
