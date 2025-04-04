@@ -18,13 +18,11 @@ public class BuscaEmLargura {
     }
 
     public List<Poste> encontrarCaminho(Poste posteCliente) throws Exception {
+
         // Se o poste da casa já estiver conectado e tiver capacidade, conecta direto
-        if (posteCliente.isConectado()) {
-            if (posteCliente.getCasasAtendidas() < Poste.getCapacidadeMax()) {
-                posteCliente.setCasasAtendidas(posteCliente.getCasasAtendidas() + 1);
-                this.posteResponsavel = posteCliente;
-                return Collections.singletonList(posteCliente);
-            }
+        if (posteCliente.isConectado() && posteCliente.getCasasAtendidas() < Poste.getCapacidadeMax()) {
+            conectarCasaAoPoste(posteCliente);
+            return Collections.singletonList(posteCliente);
         }
 
         Map<Poste, Poste> pais = new HashMap<>();
@@ -68,12 +66,10 @@ public class BuscaEmLargura {
             List<Poste> caminho = reconstruirCaminho(pais, posteConectadoMaisProximo, posteCliente);
 
             if(posteCliente.getCasasAtendidas() < Poste.getCapacidadeMax()){
-                posteCliente.setCasasAtendidas(posteCliente.getCasasAtendidas() + 1);
-                this.posteResponsavel = posteCliente;
+                conectarCasaAoPoste(posteCliente);
             }
             else{
-                posteConectadoMaisProximo.setCasasAtendidas(posteConectadoMaisProximo.getCasasAtendidas()+1);
-                this.posteResponsavel = posteConectadoMaisProximo;
+                conectarCasaAoPoste(posteConectadoMaisProximo);
             }
             return caminho;
         }
@@ -92,6 +88,12 @@ public class BuscaEmLargura {
         }
 
         throw new Exception("nenhum poste disponível");
+    }
+
+    private void conectarCasaAoPoste(Poste poste) {
+        poste.setCasasAtendidas(poste.getCasasAtendidas() + 1);
+        poste.setConectado(true);
+        this.posteResponsavel = poste;
     }
 
     private List<Poste> reconstruirCaminho(Map<Poste, Poste> pais, Poste destino, Poste origem) {
