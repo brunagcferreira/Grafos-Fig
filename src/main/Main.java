@@ -42,9 +42,11 @@ public class Main {
                 Poste alvo = rede.encontrarPostePorId(id);
                 if (alvo != null) {
                     List<Poste> caminho = buscaLargura.encontrarCaminho(alvo);
+                    Poste posteCliPoste = buscaLargura.getPosteResponsavel();
+                    System.out.println("Cliente conectado ao poste ID " + posteCliPoste.getId());
+                    System.out.println("Casas atendidas pelo poste id "+ posteCliPoste.getId() + ": " + posteCliPoste.getCasasAtendidas() + "/" + Poste.getCapacidadeMax());
                     System.out.println("caminho: " + buscaLargura.caminhoToString(caminho));
                     System.out.println("Distancia percorrida: " + buscaLargura.calcularDistanciaTotal(caminho));
-                    System.out.println("Casas atendidas pelo poste id "+ alvo.getId() + ": " + alvo.getCasasAtendidas() + "/" + Poste.getCapacidadeMax());
                     buscaLargura.conectarCaminho(caminho);
                 } else {
                     System.out.println("Poste de id " + id + " não encontrado");

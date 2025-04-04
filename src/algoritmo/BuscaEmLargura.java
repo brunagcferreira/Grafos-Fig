@@ -11,15 +11,18 @@ import model.RedeEletrica;
 
 public class BuscaEmLargura {
     private RedeEletrica rede;
+    private Poste posteResponsavel;
 
     public BuscaEmLargura(RedeEletrica rede) {
         this.rede = rede;
     }
 
     public List<Poste> encontrarCaminho(Poste posteCliente) throws Exception {
+        // Se o poste da casa já estiver conectado e tiver capacidade, conecta direto
         if (posteCliente.isConectado()) {
             if (posteCliente.getCasasAtendidas() < Poste.getCapacidadeMax()) {
                 posteCliente.setCasasAtendidas(posteCliente.getCasasAtendidas() + 1);
+                this.posteResponsavel = posteCliente;
                 return Collections.singletonList(posteCliente);
             }
         }
@@ -63,11 +66,14 @@ public class BuscaEmLargura {
 
         if (posteConectadoMaisProximo != null) {
             List<Poste> caminho = reconstruirCaminho(pais, posteConectadoMaisProximo, posteCliente);
+
             if(posteCliente.getCasasAtendidas() < Poste.getCapacidadeMax()){
                 posteCliente.setCasasAtendidas(posteCliente.getCasasAtendidas() + 1);
+                this.posteResponsavel = posteCliente;
             }
             else{
                 posteConectadoMaisProximo.setCasasAtendidas(posteConectadoMaisProximo.getCasasAtendidas()+1);
+                this.posteResponsavel = posteConectadoMaisProximo;
             }
             return caminho;
         }
@@ -80,6 +86,7 @@ public class BuscaEmLargura {
                 caminho.add(vizinho);
                 vizinho.setConectado(true);
                 vizinho.setCasasAtendidas(1);
+                this.posteResponsavel = vizinho;
                 return caminho;
             }
         }
@@ -135,4 +142,21 @@ public class BuscaEmLargura {
 
         return sb.toString();
     }
+
+    public RedeEletrica getRede() {
+        return rede;
+    }
+
+    public void setRede(RedeEletrica rede) {
+        this.rede = rede;
+    }
+
+    public Poste getPosteResponsavel() {
+        return posteResponsavel;
+    }
+
+    public void setPosteResponsavel(Poste posteCliente) {
+        this.posteResponsavel = posteCliente;
+    }
+
 }
