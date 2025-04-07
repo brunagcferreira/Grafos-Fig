@@ -9,7 +9,7 @@ Junto ao código fonte, encontra-se o arquivo `entrada.txt`, que contém a descr
 
 A seguir, uma imagem representativa do grafo gerado a partir dos dados contidos no `entrada.txt`:
 
-![Imagem do Grafo](src/resources/grafo.png)
+![Imagem do Grafo](src/resources/grafo.jpeg)
 
 > *Nota: A imagem acima ilustra a estrutura do grafo montado a partir do arquivo `entrada.txt`, onde cada vértice representa um poste e cada aresta representa uma conexão entre os postes com o seu peso correspondente.*
 
