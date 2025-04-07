@@ -11,8 +11,7 @@ A seguir, uma imagem representativa do grafo gerado a partir dos dados contidos 
 
 ![Imagem do Grafo](src/resources/grafo.jpeg)
 
-> *Nota: A imagem acima ilustra a estrutura do grafo montado a partir do arquivo `entrada.txt`, onde cada vértice representa um poste e cada aresta representa uma conexão entre os postes com o seu peso correspondente. O Poste ID 28 representa a provedora. As arestas azuis possuem 7m. As arestas verdes possuem 8m. As arestas rosas possuem  9m
-*
+> *Nota: A imagem acima ilustra a estrutura do grafo montado a partir do arquivo `entrada.txt`, onde cada vértice representa um poste e cada aresta representa uma conexão entre os postes com o seu peso correspondente. O Poste ID 28 representa a provedora. As arestas azuis possuem 7m. As arestas verdes possuem 8m. As arestas rosas possuem  9m *
 
 ---
 ## Visão Geral
